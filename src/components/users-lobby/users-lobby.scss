@@ -1,0 +1,23 @@
+@import '../../styles/index.scss';
+
+// Variables
+// --------------------------------------------------------
+$_min-user-card-width: 128px;
+$_lobby-max-width: 1280px;
+
+// users-lobby
+// --------------------------------------------------------
+.users-lobby {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($_min-user-card-width, 1fr));
+    gap: var(--gutter);
+    margin: 0 auto;
+    max-width: $_lobby-max-width;
+    padding: var(--double-gutter);
+
+    //
+    // ----------------------------------------------------
+    @include desktop() {
+        grid-template-columns: repeat(5, 1fr);
+    }
+}

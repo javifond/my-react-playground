@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as api from './api';
+import { setUsers } from './actions/actions';
+import UsersLobby from './components/users-lobby/users-lobby';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.scss';
+
+const mapStateToProps = (state) => ({
+  ...state,
+});
+
+const mapDispatchToProps = {
+  setUsers,
+};
+
+class App extends Component {
+  componentDidMount() {
+    api.fetchUsers()
+      .then((users) => this.props.setUsers({
+        isLoading: false,
+        users: users.results
+      }))
+      .catch((err) => console.log(err))
+  }
+
+  render() {
+    const { isLoading } = this.props;
+
+    return (
+      <>
+        <header className="header">
+          <h1 className="title">Users List</h1>
+        </header>
+        { isLoading && <div className="loading">Loading...</div> }
+        { !isLoading && <UsersLobby /> }
+        <footer className="footer">
+          <p>Copyright - Javs - 2021</p>
+        </footer>
+    </>
+    );
+  }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

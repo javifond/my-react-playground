@@ -1,0 +1,35 @@
+// Variables
+// --------------------------------------------------------
+
+// user
+// --------------------------------------------------------
+.user {
+	align-items: center;
+    display: flex;
+    flex-direction: column;
+	text-align: center;
+	transition: transform var(--global-animation-duration) ease;
+	will-change: transform;
+
+	@media (prefers-reduced-motion: no-preference) {
+		animation: zoomIn var(--global-animation-duration) ease;
+	}
+
+	&:hover {
+		cursor: pointer;
+		transform: scale(1.1);
+	}
+
+	img,
+	div {
+		pointer-events: none;
+	}
+}
+
+// spining
+// --------------------------------------------------------
+.spining {
+	@media (prefers-reduced-motion: no-preference) {
+		animation: fadeIn infinite var(--global-animation-duration) ease;
+	}
+}

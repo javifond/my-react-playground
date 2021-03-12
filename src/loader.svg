@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+<style>
+<!-- circle -->
+.circle {
+	will-change: transform;
+}
+<!-- style for firefox only -->
+@-moz-document url-prefix() {
+	.circle {
+		transform: scale(0);
+		animation: scale-animation 1s cubic-bezier(.3, 0, .7, 1) infinite forwards;
+	}
+}
+<!-- circle 1 -->
+.circle1 {
+	animation-delay: 0s;
+}
+<!-- circle 2 -->
+.circle2 {
+	animation-delay: .166s;
+}
+<!-- circle 3 -->
+.circle3 {
+	animation-delay: .333s;
+}
+<!-- scale animation -->
+@keyframes scale-animation {
+	0% {
+		transform: scale(0);
+	}
+	50% {
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0);
+	}
+}
+</style>
+<g transform="translate(25 50)">
+	<circle class="circle circle1" cx="0" cy="0" r="6" transform="scale(0 0)">
+		<animateTransform
+			attributeName="transform"
+			type="scale"
+			begin="0s"
+			calcMode="spline"
+			keySplines="0.3 0 0.7 1;0.3 0 0.7 1"
+			values="0;1;0"
+			keyTimes="0;0.5;1"
+			dur="1s"
+			repeatCount="indefinite"
+		/>
+	</circle>
+</g>
+<g transform="translate(50 50)">
+	<circle class="circle circle2" cx="0" cy="0" r="6" transform="scale(0 0)">
+		<animateTransform
+			attributeName="transform"
+			type="scale"
+			begin="0.166s"
+			calcMode="spline"
+			keySplines="0.3 0 0.7 1;0.3 0 0.7 1"
+			values="0;1;0"
+			keyTimes="0;0.5;1"
+			dur="1s"
+			repeatCount="indefinite"
+		/>
+	</circle>
+</g>
+<g transform="translate(75 50)">
+	<circle class="circle circle3" cx="0" cy="0" r="6" transform="scale(0 0)">
+		<animateTransform
+			attributeName="transform"
+			type="scale"
+			begin="0.333s"
+			calcMode="spline"
+			keySplines="0.3 0 0.7 1;0.3 0 0.7 1"
+			values="0;1;0"
+			keyTimes="0;0.5;1"
+			dur="1s"
+			repeatCount="indefinite"
+		/>
+	</circle>
+</g>
+</svg>
